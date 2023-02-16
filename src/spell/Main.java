@@ -21,19 +21,23 @@ public class Main {
 		String dictionaryFileName = args[0];
 		String inputWord = args[1];
 		//todo Finish writing the code to put all the words in a hashmap with the correct size.
-
-		HashMap wordMap = new HashMap();
 		File dictionary = new File(dictionaryFileName);
+		HashMap wordMap = new HashMap();
 		Scanner sc = new Scanner(dictionary);
 
-
+		int wordCount = 0;
 		while(sc.hasNextLine()){
 			String word = sc.nextLine();
-			if(wordMap.containsKey(word)){
-				System.out.println(word);
-				wordMap.replace(word,)s
-			}
 
+			if(!wordMap.containsKey(word)){
+				wordCount=1;
+				wordMap.put(word,wordCount);
+
+			}
+			else{
+				wordCount++;
+				wordMap.replace(word,wordCount-1,wordCount);
+			}
 
 		}
 
@@ -49,7 +53,7 @@ public class Main {
 		//
         //Create an instance of your corrector here
         //
-		ISpellCorrector corrector = null;
+		ISpellCorrector corrector = new SpellCorrector();
 
 		
 		corrector.useDictionary(dictionaryFileName);
